@@ -1,0 +1,15 @@
+alembic
+asyncpg
+fastapi
+uvicorn
+python-dotenv
+pydantic
+pydantic-settings
+sqlalchemy
+assem
+python-multipart
+requests
+anthropic
+httpx
+pika
+aiohttp
