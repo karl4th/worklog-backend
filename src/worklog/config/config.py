@@ -1,19 +1,21 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
+
 
 
 class Settings(BaseSettings):
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_DB: str
+    POSTGRES_USER: str = os.getenv("POSTGRES_USER")
+    POSTGRES_PASSWORD: str = os.getenv("POSTGRES_PASSWORD")
+    POSTGRES_DB: str = os.getenv("POSTGRES_DB")
     
-    DB_HOST: str
-    DB_PORT: int
+    DB_HOST: str = os.getenv("DB_HOST")
+    DB_PORT: int = os.getenv("DB_PORT")
 
-    ANTHROPIC_API_KEY: str
-    TELEGRAM_API_KEY: str
-    WHATSAPP_API_KEY: str
+    ANTHROPIC_API_KEY: str = os.getenv("ANTHROPIC_API_KEY")
+    TELEGRAM_API_KEY: str = os.getenv("TELEGRAM_API_KEY")
+    WHATSAPP_API_KEY: str = os.getenv("WHATSAPP_API_KEY")
 
-    JWT_SECRET_KEY: str
+    JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY")
 
     @property
     def DATABASE_URL_asyncpg(self):
@@ -35,6 +37,5 @@ class Settings(BaseSettings):
     def GET_JWT_SECRET_KEY(self):
         return self.JWT_SECRET_KEY
 
-    model_config = SettingsConfigDict(env_file=".env.dev")
 
 settings = Settings()

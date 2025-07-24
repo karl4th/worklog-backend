@@ -30,7 +30,7 @@ def get_routes(app):
     app.include_router(task_file_router)
     app.include_router(user_router)
     app.include_router(lvl4_act_router)
-    app.include_router(ai_router)
+    # app.include_router(ai_router)
     app.include_router(reshift_router)
 
     return app
